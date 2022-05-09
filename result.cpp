@@ -93,8 +93,8 @@ double_error Forward(std::string calcul)
 
     if (calcul.length() == 0) return {true, 0};
 
-    int parenthesis_opens_at = -1;
-    int parenthesis_closes_at = calcul.length();
+    int parenthesis_opens_at{ -1 };
+    int parenthesis_closes_at{};
 
     for (int idx = 0; idx < calcul.length(); idx++){
         switch (calcul[idx]){
