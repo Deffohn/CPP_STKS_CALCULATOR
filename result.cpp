@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <cmath>
+
 std::string Numbers("0123456789");
 
 typedef struct{
@@ -76,19 +78,13 @@ double_error Numbering(std::string calcul, double val, bool isComa, double preci
         for (int test_idx = 0; test_idx < Numbers.length(); test_idx++){
             if (calcul[0] == Numbers[test_idx]){
                 //48 /*ASCII char '0'*/ +
-                val += (calcul[0] - 48 /*ASCII char '0'*/) *
+                val += (calcul[0] - 48 /*ASCII char '0'*/) / pow(10, precision);
+                precision--;
             }
         }
-        else
-//            switch{
-//                case '.':
-//                    return 0;
-//                default:
-
-//            }
-        }
+        return {true, 0}; // as error for now
     }
-//    if (isComa)
+    return {true, 0};
 }
 
 double_error Forward(std::string calcul)
@@ -132,3 +128,14 @@ double_error Forward(std::string calcul)
     }
     return {true, 0};
 }
+
+std::string ProcessCalcul(std::string raw_calcul)
+{
+    std::string calcul = CleanCalcul(raw_calcul);
+}
+
+
+
+
+
+
