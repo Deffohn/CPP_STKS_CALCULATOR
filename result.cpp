@@ -52,8 +52,8 @@ int BracketScan(std::string calcul)
             case ')':
                 parenthesis_closes_amount++;
                 parenthesis_closes_at = idx;
-                if (parenthesis_opens_amount == parenthesis_closes_amount) return parenthesis_closes_at;
-                break;
+                if (parenthesis_opens_amount == parenthesis_closes_amount)
+                    return parenthesis_closes_at + 1;
         }
     }
     return -1;
@@ -93,8 +93,8 @@ double_error Forward(std::string calcul)
 
     if (calcul.length() == 0) return {true, 0};
 
-    int parenthesis_opens_at = -1;
-    int parenthesis_closes_at = calcul.length();
+    int parenthesis_opens_at{ -1 };
+    int parenthesis_closes_at{};
 
     for (int idx = 0; idx < calcul.length(); idx++){
         switch (calcul[idx]){
@@ -118,24 +118,24 @@ double_error Forward(std::string calcul)
                 idx = parenthesis_closes_at;
                 break;
             case '+':{
-                PlusOperator plusOperator(Forward(calcul.substr(0, idx - 1)), Forward(calcul.substr(idx + 1, calcul.length())));
+                PlusOperator plusOperator(Forward(calcul.substr(0, idx)), Forward(calcul.substr(idx + 1, calcul.length())));
                 return plusOperator.execute();
             }
             case '-':{
-                MinusOperator minusOperator(Forward(calcul.substr(0, idx - 1)), Forward(calcul.substr(idx + 1, calcul.length())));
+                MinusOperator minusOperator(Forward(calcul.substr(0, idx)), Forward(calcul.substr(idx + 1, calcul.length())));
                 return minusOperator.execute();
             }
+            case '^':{
+                PowerOperator powerOperator(Forward(calcul.substr(0, idx)), Forward(calcul.substr(idx + 1, calcul.length())));
+                return powerOperator.execute();
+            }
             case '*':{
-                MultiplyOperator multiplyOperator(Forward(calcul.substr(0, idx - 1)), Forward(calcul.substr(idx + 1, calcul.length())));
+                MultiplyOperator multiplyOperator(Forward(calcul.substr(0, idx)), Forward(calcul.substr(idx + 1, calcul.length())));
                 return multiplyOperator.execute();
             }
             case '/':{
-                DivideOperator divideOperator(Forward(calcul.substr(0, idx - 1)), Forward(calcul.substr(idx + 1, calcul.length())));
+                DivideOperator divideOperator(Forward(calcul.substr(0, idx)), Forward(calcul.substr(idx + 1, calcul.length())));
                 return divideOperator.execute();
-            }
-            case '^':{
-                PowerOperator powerOperator(Forward(calcul.substr(0, idx - 1)), Forward(calcul.substr(idx + 1, calcul.length())));
-                return powerOperator.execute();
             }
         }
     }
