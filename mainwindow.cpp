@@ -220,8 +220,8 @@ void MainWindow::displayCalculOnRightBracketButton()
 void MainWindow::displayCalculOnResultButton()
 {
     QString displayed = QString(ui->calculDisplay->text());
-    Result result;
-    std::string rft = result.CleanCalcul(displayed.toStdString());
+    //Result result;
+    //std::string rft = result.CleanCalcul(displayed.toStdString());
     if (!(displayed.toStdString().length() == 0)){
         displayed.append(" ");
     }
