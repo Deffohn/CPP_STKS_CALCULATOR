@@ -1,7 +1,7 @@
 #include "operator.hpp"
 
 //Constructor double a, double b
-Operator::Operator(double a, double b)
+Operator::Operator(double_error a, double_error b)
 {
     this->a = a;
     this->b = b;

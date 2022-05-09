@@ -1,13 +1,13 @@
 #ifndef RESULT_HPP
 #define RESULT_HPP
 
+#include "plusoperator.hpp"
+
 #include <iostream>
 
 
-typedef struct{
-    bool error;
-    double value;
-}double_error;
+
+#include <typevalue.hpp>
 
 
 std::string CleanCalcul(std::string calcul);
