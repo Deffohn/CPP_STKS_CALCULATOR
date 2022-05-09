@@ -107,8 +107,8 @@ double_error Forward(std::string calcul)
 
     if (calcul.length() == 0) return {true, 0};
 
-    int parenthesis_opens_at = -1;
-    int parenthesis_closes_at;
+    int parenthesis_opens_at{ -1 };
+    int parenthesis_closes_at{};
 
     int pos_strong_operator = -1;
     char current_strong_operator = 0;
