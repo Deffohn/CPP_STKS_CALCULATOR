@@ -19,6 +19,10 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.hpp
         mainwindow.ui
+        operator.cpp
+        operator.hpp
+        plusoperator.cpp
+        plusoperator.hpp
         result.cpp
         result.hpp
 )
