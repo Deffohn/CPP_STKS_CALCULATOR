@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include <typevalue.hpp>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -14,7 +16,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void displayLcd(double displayedNumber);
+    void displayLcd(double_error displayedNumber);
 
 private slots:
     void displayCalculOnComaButton();
@@ -33,6 +35,9 @@ private slots:
     void displayCalculOnSubstractButton();
     void displayCalculOnProductButton();
     void displayCalculOnDivideButton();
+
+    void displayCalculOnPowButton();
+    void displayCalculOnSqrtButton();
 
     void displayCalculOnLeftBracketButton();
     void displayCalculOnRightBracketButton();

@@ -23,6 +23,14 @@ set(PROJECT_SOURCES
         operator.hpp
         plusoperator.cpp
         plusoperator.hpp
+        minusoperator.cpp
+        minusoperator.hpp
+        multiplyoperator.cpp
+        multiplyoperator.hpp
+        divideoperator.cpp
+        divideoperator.hpp
+        poweroperator.cpp
+        poweroperator.hpp
         squarerootoperator.cpp
         squarerootoperator.hpp
         result.cpp

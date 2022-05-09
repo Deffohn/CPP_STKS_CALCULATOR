@@ -39,8 +39,6 @@ std::string CleanCalcul(std::string calcul)
     return clean_calcul;
 }
 
-// Forward
-
 int BracketScan(std::string calcul)
 {
     int parenthesis_opens_amount = 1;

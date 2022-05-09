@@ -47,9 +47,11 @@ MainWindow::~MainWindow()
 }
 
 //display lcd
-void MainWindow::displayLcd(double displayedNumber)
+void MainWindow::displayLcd(double_error displayedNumber)
 {
-    QString number = QString::number(displayedNumber);
+    QString number;
+    if (displayedNumber.error) number = QString("error");
+    else number = QString::number(displayedNumber.value);
     ui->lcdNumber->display(number);
 }
 
@@ -249,34 +251,12 @@ void MainWindow::displayCalculOnRightBracketButton()
 
 // ======================================================
 
-std::string CleanCalcul(std::string calcul)
-{
-    bool html_balise_test = false;
-    std::string clean_calcul = "";
-    for (int idx = 0; idx < calcul.length(); idx++)
-    {
-        if (calcul[idx] == '<')
-        {
-            html_balise_test = true;
-        }
-        else if (calcul[idx] == '>')
-        {
-            html_balise_test = false;
-        }
-        else if (!html_balise_test and calcul[idx] != ' ' and calcul[idx] != '=')
-        {
-            clean_calcul.append(std::string{ calcul[idx] });
-        }
-    }
-    return clean_calcul;
-}
-
 void MainWindow::displayCalculOnResultButton()
 {
     QString displayed = QString(ui->calculDisplay->text());
-    //Result result;
-    //std::string rft = result.CleanCalcul(displayed.toStdString());
-
+    std::string result(CleanCalcul(displayed.toStdString()));
+    double_error double_result (Forward(result));
+    displayLcd(double_result);
     ui->calculDisplay->setText(displayed);
 }
 
