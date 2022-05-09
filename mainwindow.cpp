@@ -214,7 +214,6 @@ void MainWindow::displayCalculOnRightBracketButton()
     ui->calculDisplay->setText(displayed);
 }
 
-
 // ======================================================
 
 void MainWindow::displayCalculOnResultButton()
@@ -226,6 +225,7 @@ void MainWindow::displayCalculOnResultButton()
         displayed.append(" ");
     }
     displayed.append("=");
+    displayed.append(" ");
     ui->calculDisplay->setText(displayed);
 }
 
@@ -235,15 +235,11 @@ void MainWindow::displayCalculRemoveOnCharacter(){
 
     QString displayed = QString(ui->calculDisplay->text());
     std::string stringDisplayed(displayed.toStdString());
-    displayed.remove(displayed.length() - 1, displayed.length());
-    for (int i = displayed.length(); i >= 0; i--){
-        if (stringDisplayed[i] == ' ') {
-            displayed.remove(i - 1, i);
-        }
-        else if (stringDisplayed[i] != ' ') {
-            break;
-        }
+    if (stringDisplayed[stringDisplayed.length() - 1] != '>'){
+        displayed.remove(displayed.length() - 1, displayed.length());
     }
+    if (stringDisplayed[stringDisplayed.length() - 2] == ' ')
+        displayed.remove(displayed.length() - 1, displayed.length());
     ui->calculDisplay->setText(displayed);
 }
 
