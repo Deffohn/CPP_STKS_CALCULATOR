@@ -235,6 +235,7 @@ void MainWindow::displayCalculRemoveOnCharacter(){
 
     QString displayed = QString(ui->calculDisplay->text());
     std::string stringDisplayed(displayed.toStdString());
+    std::cout << stringDisplayed.substr(10, stringDisplayed.length() - 1) << std::endl;
     if (stringDisplayed[stringDisplayed.length() - 1] != '>'){
         displayed.remove(displayed.length() - 1, displayed.length());
     }
