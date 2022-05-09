@@ -15,6 +15,5 @@ int main(int argc, char *argv[])
     PlusOperator plusOperator(1, 2);
     std::cout << plusOperator.execute() << std::endl;
 
-
     return a.exec();
 }

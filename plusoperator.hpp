@@ -3,11 +3,8 @@
 #include "operator.hpp"
 #include <iostream>
 
-class PlusOperator : Operator
+class PlusOperator : public Operator
 {
-    private:
-        double a;
-        double b;
     public:
         PlusOperator(double a, double b);
         double execute();

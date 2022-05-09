@@ -4,7 +4,7 @@
 
 class Operator
 {
-    private:
+    protected:
         double a;
         double b;
     public:
