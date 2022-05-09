@@ -1,6 +1,7 @@
 #ifndef OPERATOR_HPP
 #define OPERATOR_HPP
 #include <iostream>
+#include "mainwindow.hpp"
 
 class Operator
 {
@@ -12,6 +13,7 @@ class Operator
         //virtual execute(double a, double b);
         virtual double execute() = 0;
         void printError(std::string error);
+        
 };
 
 #endif // OPERATOR_HPP

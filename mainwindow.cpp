@@ -46,6 +46,13 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+//display lcd
+void MainWindow::displayLcd(double displayedNumber)
+{
+    QString number = QString::number(displayedNumber);
+    ui->lcdNumber->display(number);
+}
+
 void MainWindow::displayCalculOnComaButton()
 {
     QString displayed = QString(ui->calculDisplay->text());

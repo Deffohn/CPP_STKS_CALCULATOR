@@ -7,7 +7,8 @@ PlusOperator::PlusOperator(double a, double b) : Operator(a, b)
 //execute
 double PlusOperator::execute()
 {
-    return this->a + this->b;
+    double result = a + b;
+    return result;
 }
 
 
