@@ -1,14 +1,14 @@
 #include "plusoperator.hpp"
 //constructor double a, double b
-PlusOperator::PlusOperator(double a, double b) : Operator(a, b)
+PlusOperator::PlusOperator(double_error a, double_error b) : Operator(a, b)
 {
 }
 
 //execute
-double PlusOperator::execute()
+double_error PlusOperator::execute()
 {
-    double result = a + b;
-    return result;
+    bool erroring = (a.error or b.error);
+    return {erroring, this->a.value + this->b.value};
 }
 
 

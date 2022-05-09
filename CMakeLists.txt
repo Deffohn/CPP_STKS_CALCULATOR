@@ -23,8 +23,11 @@ set(PROJECT_SOURCES
         operator.hpp
         plusoperator.cpp
         plusoperator.hpp
+        squarerootoperator.cpp
+        squarerootoperator.hpp
         result.cpp
         result.hpp
+        typevalue.hpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

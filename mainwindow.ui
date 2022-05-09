@@ -252,7 +252,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Open calcul priority&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
-              <string>sqrt()</string>
+              <string>sqrt</string>
              </property>
             </widget>
            </item>
@@ -339,7 +339,7 @@
      <x>0</x>
      <y>0</y>
      <width>769</width>
-     <height>37</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
