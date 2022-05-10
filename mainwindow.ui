@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>330</width>
-    <height>567</height>
+    <height>524</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -47,6 +47,12 @@
          <height>50</height>
         </size>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>50</height>
+        </size>
+       </property>
       </widget>
      </item>
      <item>
@@ -69,6 +75,12 @@
        </property>
        <property name="frameShadow">
         <enum>QFrame::Sunken</enum>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+       <property name="cursorWidth">
+        <number>0</number>
        </property>
       </widget>
      </item>
@@ -220,6 +232,16 @@
             </item>
            </layout>
           </item>
+          <item>
+           <widget class="QPushButton" name="buttonSpace">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Point, coma to write forward decimal floating value&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="text">
+             <string>space</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </item>
         <item>
@@ -364,16 +386,9 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_7">
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="buttonPolish">
            <property name="text">
-            <string>classic mod</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_2">
-           <property name="text">
-            <string>reverse polonaise</string>
+            <string>Toggle reverse polish</string>
            </property>
           </widget>
          </item>
