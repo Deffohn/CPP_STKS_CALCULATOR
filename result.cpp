@@ -120,10 +120,14 @@ double_error Forward(std::string calcul)
                 // TO FIX
                 if (calcul[idx+1] == 'q' and calcul[idx+2] == 'r' and calcul[idx+3] == 't' and calcul[idx+4] == '(') {
                     parenthesis_opens_at = idx + 4;
-                    parenthesis_closes_at = (parenthesis_opens_at + 1) + BracketScan(calcul.substr(parenthesis_opens_at + 1, calcul.length()));
+                    parenthesis_closes_at = (parenthesis_opens_at + 1) + BracketScan(calcul.substr(parenthesis_opens_at + 1, calcul.length() - 1 - parenthesis_opens_at));
                     if (parenthesis_closes_at == -1) return {true, 0};
-                    SquareRootOperator squareRootOperator(Forward(calcul.substr(parenthesis_opens_at + 1, parenthesis_closes_at - 1 - parenthesis_opens_at)));
-                    return squareRootOperator.execute();
+                    if (parenthesis_opens_at == 4 and parenthesis_closes_at == (calcul.length() - 1)){
+                        SquareRootOperator squareRootOperator(Forward(calcul.substr(parenthesis_opens_at + 1, parenthesis_closes_at - 1 - parenthesis_opens_at)));
+                        return squareRootOperator.execute();
+                    }
+
+                    break;
                 }
                 return {true, 0};
             }
@@ -131,7 +135,7 @@ double_error Forward(std::string calcul)
             {
                 // TO FIX
                 parenthesis_opens_at = idx;
-                parenthesis_closes_at = BracketScan(calcul.substr(parenthesis_opens_at + 1, calcul.length()));
+                parenthesis_closes_at = (parenthesis_opens_at + 1) + BracketScan(calcul.substr(parenthesis_opens_at + 1, calcul.length() - 1 - parenthesis_opens_at));
                 if (parenthesis_closes_at == -1) return {true, 0};
                 if (parenthesis_opens_at == 0 and parenthesis_closes_at == calcul.length() - 1) return Forward(calcul.substr(parenthesis_opens_at + 1, calcul.length() - 2));
                 idx = parenthesis_closes_at;
