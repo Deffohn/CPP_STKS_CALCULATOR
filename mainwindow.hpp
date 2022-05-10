@@ -31,6 +31,8 @@ private slots:
     void displayCalculOnNumber8Button();
     void displayCalculOnNumber9Button();
 
+    void displayCalculSpaceButton();
+
     void displayCalculOnAddButton();
     void displayCalculOnSubstractButton();
     void displayCalculOnProductButton();
@@ -45,7 +47,10 @@ private slots:
     void displayCalculOnResultButton();
     void displayCalculRemoveOnCharacter();
 
+    void toggleReversePolish();
+
 private:
     Ui::MainWindow *ui;
+    bool reversePolish = false;
 };
 #endif // MAINWINDOW_HPP

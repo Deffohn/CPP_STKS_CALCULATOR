@@ -27,6 +27,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->buttonNumber8, &QPushButton::released, this, &MainWindow::displayCalculOnNumber8Button);
     connect(ui->buttonNumber9, &QPushButton::released, this, &MainWindow::displayCalculOnNumber9Button);
 
+    connect(ui->buttonSpace, &QPushButton::released, this, &MainWindow::displayCalculSpaceButton);
+
     connect(ui->buttonAdd, &QPushButton::released, this, &MainWindow::displayCalculOnAddButton);
     connect(ui->buttonSubstract, &QPushButton::released, this, &MainWindow::displayCalculOnSubstractButton);
     connect(ui->buttonProduct, &QPushButton::released, this, &MainWindow::displayCalculOnProductButton);
@@ -39,6 +41,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->buttonResult, &QPushButton::released, this, &MainWindow::displayCalculOnResultButton);
     connect(ui->buttonRemoveCharacter, &QPushButton::released, this, &MainWindow::displayCalculRemoveOnCharacter);
+
+    connect(ui->buttonPolish, &QPushButton::released, this, &MainWindow::toggleReversePolish);
 }
 
 MainWindow::~MainWindow()
@@ -166,6 +170,17 @@ void MainWindow::displayCalculOnNumber9Button()
 
 // ======================================================
 
+void MainWindow::displayCalculSpaceButton()
+{
+    QString displayed = QString(ui->calculDisplay->toPlainText());
+    if (!(displayed.toStdString().length() == 0)){
+        displayed.append(" ");
+        ui->calculDisplay->setText(displayed);
+    }
+}
+
+// ======================================================
+
 void MainWindow::displayCalculOnAddButton()
 {
     QString displayed = QString(ui->calculDisplay->toPlainText());
@@ -222,7 +237,8 @@ void MainWindow::displayCalculOnSqrtButton()
     if (!displayed.toStdString().empty())
         displayed.append(" ");
 
-    displayed.append("sqrt(");
+    if(!reversePolish) displayed.append("sqrt(");
+    else displayed.append("sqrt");
     ui->calculDisplay->setText(displayed);
 }
 
@@ -230,22 +246,26 @@ void MainWindow::displayCalculOnSqrtButton()
 
 void MainWindow::displayCalculOnLeftBracketButton()
 {
-    QString displayed = QString(ui->calculDisplay->toPlainText());
-    if (!(displayed.toStdString().length() == 0 or (48 /*ASCII char '0'*/ + 0 <= displayed.toStdString()[displayed.toStdString().length() - 1] and displayed.toStdString()[displayed.toStdString().length() - 1] <= 48 + 9) or '.' == displayed.toStdString()[displayed.toStdString().length() - 1] or '(' == displayed.toStdString()[displayed.toStdString().length() - 1])){
-        displayed.append(" ");
+    if(!reversePolish) {
+        QString displayed = QString(ui->calculDisplay->toPlainText());
+        if (!(displayed.toStdString().length() == 0 or (48 /*ASCII char '0'*/ + 0 <= displayed.toStdString()[displayed.toStdString().length() - 1] and displayed.toStdString()[displayed.toStdString().length() - 1] <= 48 + 9) or '.' == displayed.toStdString()[displayed.toStdString().length() - 1] or '(' == displayed.toStdString()[displayed.toStdString().length() - 1])){
+            displayed.append(" ");
+        }
+        displayed.append("(");
+        ui->calculDisplay->setText(displayed);
     }
-    displayed.append("(");
-    ui->calculDisplay->setText(displayed);
 }
 
 void MainWindow::displayCalculOnRightBracketButton()
 {
-    QString displayed = QString(ui->calculDisplay->toPlainText());
-    if (!(displayed.toStdString().length() == 0 or (48 /*ASCII char '0'*/ + 0 <= displayed.toStdString()[displayed.toStdString().length() - 1] and displayed.toStdString()[displayed.toStdString().length() - 1] <= 48 + 9) or '.' == displayed.toStdString()[displayed.toStdString().length() - 1] or '(' == displayed.toStdString()[displayed.toStdString().length() - 1])){
-        displayed.append(" ");
+    if(!reversePolish) {
+        QString displayed = QString(ui->calculDisplay->toPlainText());
+        if (!(displayed.toStdString().length() == 0 or (48 /*ASCII char '0'*/ + 0 <= displayed.toStdString()[displayed.toStdString().length() - 1] and displayed.toStdString()[displayed.toStdString().length() - 1] <= 48 + 9) or '.' == displayed.toStdString()[displayed.toStdString().length() - 1] or '(' == displayed.toStdString()[displayed.toStdString().length() - 1])){
+            displayed.append(" ");
+        }
+        displayed.append(")");
+        ui->calculDisplay->setText(displayed);
     }
-    displayed.append(")");
-    ui->calculDisplay->setText(displayed);
 }
 
 // ======================================================
@@ -253,12 +273,20 @@ void MainWindow::displayCalculOnRightBracketButton()
 void MainWindow::displayCalculOnResultButton()
 {
     QString displayed = QString(ui->calculDisplay->toPlainText());
-    std::string result(CleanCalcul(displayed.toStdString()));
-    double_error double_result (Forward(result));
+    Result res(reversePolish);
+    std::string result;
+    double_error double_result;
+    if (!reversePolish){
+        result = res.CleanCalcul(displayed.toStdString());
+        double_result = res.Forward(result, 0, result);
+    }
+    else {
+        result = res.CleanReversePolishCalcul(displayed.toStdString());
+        double_result = res.ForwardReversePolish(result);
+    }
     displayResult(double_result);
     ui->calculDisplay->setText(displayed);
 }
-
 
 void MainWindow::displayCalculRemoveOnCharacter(){
     QString displayed = QString(ui->calculDisplay->toPlainText());
@@ -271,3 +299,8 @@ void MainWindow::displayCalculRemoveOnCharacter(){
     ui->calculDisplay->setText(displayed);
 }
 
+void MainWindow::toggleReversePolish(){
+    reversePolish = !reversePolish;
+    if (reversePolish) ui->buttonPolish->setText("Toggle regular calculator");
+    else ui->buttonPolish->setText("Toggle reverse polish");
+}
