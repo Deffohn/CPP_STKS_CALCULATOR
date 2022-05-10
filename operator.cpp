@@ -14,5 +14,3 @@ void Operator::printError(std::string error)
 {
     std::cout << error << std::endl;
 }
-
-
