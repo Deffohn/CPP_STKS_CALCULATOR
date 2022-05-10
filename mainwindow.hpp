@@ -16,7 +16,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void displayLcd(double_error displayedNumber);
+    void displayResult(double_error displayedNumber);
 
 private slots:
     void displayCalculOnComaButton();

@@ -47,12 +47,12 @@ MainWindow::~MainWindow()
 }
 
 //display lcd
-void MainWindow::displayLcd(double_error displayedNumber)
+void MainWindow::displayResult(double_error displayedNumber)
 {
     QString number;
     if (displayedNumber.error) number = QString("error");
     else number = QString::number(displayedNumber.value);
-    ui->lcdNumber->display(number);
+    ui->resultDisplay->setText(number);
 }
 
 void MainWindow::displayCalculOnComaButton()
@@ -256,7 +256,7 @@ void MainWindow::displayCalculOnResultButton()
     QString displayed = QString(ui->calculDisplay->toPlainText());
     std::string result(CleanCalcul(displayed.toStdString()));
     double_error double_result (Forward(result));
-    displayLcd(double_result);
+    displayResult(double_result);
     ui->calculDisplay->setText(displayed);
 }
 
