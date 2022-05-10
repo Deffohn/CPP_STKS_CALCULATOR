@@ -57,7 +57,7 @@ void MainWindow::displayLcd(double_error displayedNumber)
 
 void MainWindow::displayCalculOnComaButton()
 {
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     if (!(displayed.toStdString().length() == 0 or (48 + 0 <= displayed.toStdString()[displayed.toStdString().length() - 1] and displayed.toStdString()[displayed.toStdString().length() - 1] <= 48 + 9)) ){
         displayed.append(" ");
     }
@@ -67,7 +67,7 @@ void MainWindow::displayCalculOnComaButton()
 
 void MainWindow::displayCalculOnNumber0Button()
 {
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     if (!(displayed.toStdString().length() == 0 or (48 /*ASCII char '0'*/ + 0 <= displayed.toStdString()[displayed.toStdString().length() - 1] and displayed.toStdString()[displayed.toStdString().length() - 1] <= 48 + 9) or '.' == displayed.toStdString()[displayed.toStdString().length() - 1] or '(' == displayed.toStdString()[displayed.toStdString().length() - 1])){
         displayed.append(" ");
     }
@@ -77,7 +77,7 @@ void MainWindow::displayCalculOnNumber0Button()
 
 void MainWindow::displayCalculOnNumber1Button()
 {
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     if (!(displayed.toStdString().length() == 0 or (48 /*ASCII char '0'*/ + 0 <= displayed.toStdString()[displayed.toStdString().length() - 1] and displayed.toStdString()[displayed.toStdString().length() - 1] <= 48 + 9) or '.' == displayed.toStdString()[displayed.toStdString().length() - 1] or '(' == displayed.toStdString()[displayed.toStdString().length() - 1])){
         displayed.append(" ");
     }
@@ -87,7 +87,7 @@ void MainWindow::displayCalculOnNumber1Button()
 
 void MainWindow::displayCalculOnNumber2Button()
 {
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     if (!(displayed.toStdString().length() == 0 or (48 /*ASCII char '0'*/ + 0 <= displayed.toStdString()[displayed.toStdString().length() - 1] and displayed.toStdString()[displayed.toStdString().length() - 1] <= 48 + 9) or '.' == displayed.toStdString()[displayed.toStdString().length() - 1] or '(' == displayed.toStdString()[displayed.toStdString().length() - 1])){
         displayed.append(" ");
     }
@@ -97,7 +97,7 @@ void MainWindow::displayCalculOnNumber2Button()
 
 void MainWindow::displayCalculOnNumber3Button()
 {
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     if (!(displayed.toStdString().length() == 0 or (48 /*ASCII char '0'*/ + 0 <= displayed.toStdString()[displayed.toStdString().length() - 1] and displayed.toStdString()[displayed.toStdString().length() - 1] <= 48 + 9) or '.' == displayed.toStdString()[displayed.toStdString().length() - 1] or '(' == displayed.toStdString()[displayed.toStdString().length() - 1])){
         displayed.append(" ");
     }
@@ -107,7 +107,7 @@ void MainWindow::displayCalculOnNumber3Button()
 
 void MainWindow::displayCalculOnNumber4Button()
 {
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     if (!(displayed.toStdString().length() == 0 or (48 /*ASCII char '0'*/ + 0 <= displayed.toStdString()[displayed.toStdString().length() - 1] and displayed.toStdString()[displayed.toStdString().length() - 1] <= 48 + 9) or '.' == displayed.toStdString()[displayed.toStdString().length() - 1] or '(' == displayed.toStdString()[displayed.toStdString().length() - 1])){
         displayed.append(" ");
     }
@@ -117,7 +117,7 @@ void MainWindow::displayCalculOnNumber4Button()
 
 void MainWindow::displayCalculOnNumber5Button()
 {
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     if (!(displayed.toStdString().length() == 0 or (48 /*ASCII char '0'*/ + 0 <= displayed.toStdString()[displayed.toStdString().length() - 1] and displayed.toStdString()[displayed.toStdString().length() - 1] <= 48 + 9) or '.' == displayed.toStdString()[displayed.toStdString().length() - 1] or '(' == displayed.toStdString()[displayed.toStdString().length() - 1])){
         displayed.append(" ");
     }
@@ -127,7 +127,7 @@ void MainWindow::displayCalculOnNumber5Button()
 
 void MainWindow::displayCalculOnNumber6Button()
 {
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     if (!(displayed.toStdString().length() == 0 or (48 /*ASCII char '0'*/ + 0 <= displayed.toStdString()[displayed.toStdString().length() - 1] and displayed.toStdString()[displayed.toStdString().length() - 1] <= 48 + 9) or '.' == displayed.toStdString()[displayed.toStdString().length() - 1] or '(' == displayed.toStdString()[displayed.toStdString().length() - 1])){
         displayed.append(" ");
     }
@@ -137,7 +137,7 @@ void MainWindow::displayCalculOnNumber6Button()
 
 void MainWindow::displayCalculOnNumber7Button()
 {
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     if (!(displayed.toStdString().length() == 0 or (48 /*ASCII char '0'*/ + 0 <= displayed.toStdString()[displayed.toStdString().length() - 1] and displayed.toStdString()[displayed.toStdString().length() - 1] <= 48 + 9) or '.' == displayed.toStdString()[displayed.toStdString().length() - 1] or '(' == displayed.toStdString()[displayed.toStdString().length() - 1])){
         displayed.append(" ");
     }
@@ -147,7 +147,7 @@ void MainWindow::displayCalculOnNumber7Button()
 
 void MainWindow::displayCalculOnNumber8Button()
 {
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     if (!(displayed.toStdString().length() == 0 or (48 /*ASCII char '0'*/ + 0 <= displayed.toStdString()[displayed.toStdString().length() - 1] and displayed.toStdString()[displayed.toStdString().length() - 1] <= 48 + 9) or '.' == displayed.toStdString()[displayed.toStdString().length() - 1] or '(' == displayed.toStdString()[displayed.toStdString().length() - 1])){
         displayed.append(" ");
     }
@@ -157,7 +157,7 @@ void MainWindow::displayCalculOnNumber8Button()
 
 void MainWindow::displayCalculOnNumber9Button()
 {
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     if (!(displayed.toStdString().length() == 0 or (48 /*ASCII char '0'*/ + 0 <= displayed.toStdString()[displayed.toStdString().length() - 1] and displayed.toStdString()[displayed.toStdString().length() - 1] <= 48 + 9) or '.' == displayed.toStdString()[displayed.toStdString().length() - 1] or '(' == displayed.toStdString()[displayed.toStdString().length() - 1])){
         displayed.append(" ");
     }
@@ -169,7 +169,7 @@ void MainWindow::displayCalculOnNumber9Button()
 
 void MainWindow::displayCalculOnAddButton()
 {
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     if (!(displayed.toStdString().length() == 0)){
         displayed.append(" ");
     }
@@ -179,7 +179,7 @@ void MainWindow::displayCalculOnAddButton()
 
 void MainWindow::displayCalculOnSubstractButton()
 {
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     if (!(displayed.toStdString().length() == 0)){
         displayed.append(" ");
     }
@@ -189,7 +189,7 @@ void MainWindow::displayCalculOnSubstractButton()
 
 void MainWindow::displayCalculOnProductButton()
 {
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     if (!(displayed.toStdString().length() == 0)){
         displayed.append(" ");
     }
@@ -199,7 +199,7 @@ void MainWindow::displayCalculOnProductButton()
 
 void MainWindow::displayCalculOnDivideButton()
 {
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     if (!(displayed.toStdString().length() == 0)){
         displayed.append(" ");
     }
@@ -209,7 +209,7 @@ void MainWindow::displayCalculOnDivideButton()
 
 void MainWindow::displayCalculOnPowButton()
 {
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     if (!displayed.toStdString().empty())
         displayed.append(" ");
 
@@ -219,7 +219,7 @@ void MainWindow::displayCalculOnPowButton()
 
 void MainWindow::displayCalculOnSqrtButton()
 {
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     if (!displayed.toStdString().empty())
         displayed.append(" ");
 
@@ -231,7 +231,7 @@ void MainWindow::displayCalculOnSqrtButton()
 
 void MainWindow::displayCalculOnLeftBracketButton()
 {
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     if (!(displayed.toStdString().length() == 0 or (48 /*ASCII char '0'*/ + 0 <= displayed.toStdString()[displayed.toStdString().length() - 1] and displayed.toStdString()[displayed.toStdString().length() - 1] <= 48 + 9) or '.' == displayed.toStdString()[displayed.toStdString().length() - 1] or '(' == displayed.toStdString()[displayed.toStdString().length() - 1])){
         displayed.append(" ");
     }
@@ -241,7 +241,7 @@ void MainWindow::displayCalculOnLeftBracketButton()
 
 void MainWindow::displayCalculOnRightBracketButton()
 {
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     if (!(displayed.toStdString().length() == 0 or (48 /*ASCII char '0'*/ + 0 <= displayed.toStdString()[displayed.toStdString().length() - 1] and displayed.toStdString()[displayed.toStdString().length() - 1] <= 48 + 9) or '.' == displayed.toStdString()[displayed.toStdString().length() - 1] or '(' == displayed.toStdString()[displayed.toStdString().length() - 1])){
         displayed.append(" ");
     }
@@ -253,7 +253,7 @@ void MainWindow::displayCalculOnRightBracketButton()
 
 void MainWindow::displayCalculOnResultButton()
 {
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     std::string result(CleanCalcul(displayed.toStdString()));
     double_error double_result (Forward(result));
     displayLcd(double_result);
@@ -262,7 +262,7 @@ void MainWindow::displayCalculOnResultButton()
 
 
 void MainWindow::displayCalculRemoveOnCharacter(){
-    QString displayed = QString(ui->calculDisplay->text());
+    QString displayed = QString(ui->calculDisplay->toPlainText());
     std::string stringDisplayed(displayed.toStdString());
     if (stringDisplayed[stringDisplayed.length() - 1] != '>'){
         displayed.remove(displayed.length() - 1, displayed.length());
