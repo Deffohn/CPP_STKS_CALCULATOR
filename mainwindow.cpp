@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->buttonSqrt->setText(QString::fromUtf8("\u221A"));
 
     connect(ui->buttonComa, &QPushButton::released, this, &MainWindow::onButtonClicked);
-    connect(ui->buttonSpace, &QPushButton::released, this, &MainWindow::displayCalculSpaceButton);
+    connect(ui->buttonSpace, &QPushButton::released, this, &MainWindow::onButtonClicked);
 
     connect(ui->buttonNumber0, &QPushButton::released, this, &MainWindow::onButtonClicked);
     connect(ui->buttonNumber1, &QPushButton::released, this, &MainWindow::onButtonClicked);
@@ -39,8 +39,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->buttonLeftBracket, &QPushButton::released, this, &MainWindow::onButtonClicked);
     connect(ui->buttonRightBracket, &QPushButton::released, this, &MainWindow::onButtonClicked);
 
-    connect(ui->buttonResult, &QPushButton::released, this, &MainWindow::displayCalculOnResultButton);
-    connect(ui->buttonRemoveCharacter, &QPushButton::released, this, &MainWindow::displayCalculRemoveOnCharacter);
+    connect(ui->buttonResult, &QPushButton::released, this, &MainWindow::onComputeClicked);
+    connect(ui->buttonRemoveCharacter, &QPushButton::released, this, &MainWindow::onRemoveCharClicked);
+    connect(ui->buttonClearExpression, &QPushButton::released, this, &MainWindow::onClearExpressionClicked);
 
     connect(ui->buttonPolish, &QPushButton::released, this, &MainWindow::toggleReversePolish);
 }
@@ -50,10 +51,19 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::displayResult(double_error result)
+{
+    ui->resultDisplay->setText(QString{ (result.error) ? "error" : QString::number(result.value) });
+}
+
+// ======================================================
+
 void MainWindow::onButtonClicked()
 {
     auto button_text = qobject_cast<QPushButton*>(sender())->text().toStdString();
-    if (button_text == "\u00D7")
+    if (button_text == "space")
+        button_text = " ";
+    else if (button_text == "\u00D7")
         button_text = "*";
     else if (button_text == "\u00F7")
         button_text = "/";
@@ -71,6 +81,9 @@ void MainWindow::onButtonClicked()
 
     const auto displayed_text = ui->calculDisplay->toPlainText().toStdString();
     if (std::empty(displayed_text)) {
+        if (button_text == " ")
+            return;
+
         ui->calculDisplay->setText(QString::fromStdString(button_text));
         return;
     }
@@ -89,14 +102,7 @@ void MainWindow::onButtonClicked()
     ui->calculDisplay->setText(ui->calculDisplay->toPlainText().append(QString::fromStdString(std::string{" "}.append(button_text))));
 }
 
-void MainWindow::displayResult(double_error result)
-{
-    ui->resultDisplay->setText(QString{ (result.error) ? "error" : QString::number(result.value) });
-}
-
-// ======================================================
-
-void MainWindow::displayCalculOnResultButton()
+void MainWindow::onComputeClicked()
 {
     QString displayed = QString(ui->calculDisplay->toPlainText());
     if (displayed.size() == 0) {
