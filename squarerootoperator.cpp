@@ -8,5 +8,6 @@ SquareRootOperator::SquareRootOperator(double_error a)
 double_error SquareRootOperator::execute()
 {
     bool erroring = a.error;
-    return {erroring, sqrt(this->a.value)};
+    if (0 <= a.value) return {erroring, sqrt(this->a.value)};
+    return {true, 0};
 }
