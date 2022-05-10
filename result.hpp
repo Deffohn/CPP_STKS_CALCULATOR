@@ -4,6 +4,7 @@
 #include "plusoperator.hpp"
 #include <typevalue.hpp>
 
+#include <cmath>
 #include <iostream>
 
 std::string CleanCalcul(std::string calcul);

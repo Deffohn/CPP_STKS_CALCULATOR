@@ -3,8 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <cmath>
-
 #include <iostream>
 #include <string>
 
@@ -15,9 +13,9 @@
 #include <poweroperator.hpp>
 #include <squarerootoperator.hpp>
 
-std::string Numbers("0123456789");
+const std::string Numbers("0123456789");
 
-std::string Operators("+-*/^");
+const std::string Operators("+-*/^");
 
 std::string CleanCalcul(std::string calcul)
 {
@@ -77,15 +75,14 @@ int OperatorScan(char current_strong_operator, int pos_strong_operator, char cur
 double_error Numbering(std::string calcul, double_error val, bool isComa, double precision)
 {
     if (val.error) return {true, 0};
-    if (calcul[0] == '=') return val;
     if (calcul.length() == 0) return val;
+
     if (isComa){
-        if (calcul[0] == '.') return {true, 0}; // as error for now
+        if (calcul[0] == '.') return {true, 0};
         for (int test_idx = 0; test_idx < Numbers.length(); test_idx++){
             if (calcul[0] == Numbers[test_idx]){
-                val.value += (calcul[0] - 48 /*ASCII char '0'*/) * pow(10, -1);
-                precision--;
-                return Numbering(calcul.erase(0, 1), val, isComa, precision);
+                val.value += (calcul[0] - 48 /*ASCII char '0'*/) * std::pow(10, precision);
+                return Numbering(calcul.erase(0, 1), val, isComa, --precision);
             }
         }
         return {true, 0};
@@ -95,7 +92,7 @@ double_error Numbering(std::string calcul, double_error val, bool isComa, double
         for (int test_idx = 0; test_idx < Numbers.length(); test_idx++){
             if (calcul[0] == Numbers[test_idx]){
                 val.value = val.value * 10 + (calcul[0] - 48 /*ASCII char '0'*/);
-                return Numbering(calcul.erase(0, 1), val, isComa, 0);
+                return Numbering(calcul.erase(0, 1), val, false, 0);
             }
         }
         return {true, 0};
@@ -104,7 +101,6 @@ double_error Numbering(std::string calcul, double_error val, bool isComa, double
 
 double_error Forward(std::string calcul)
 {
-
     if (calcul.length() == 0) return {true, 0};
 
     int parenthesis_opens_at{ -1 };

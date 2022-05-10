@@ -11,5 +11,5 @@ double_error PowerOperator::execute()
 {
     bool erroring = (a.error or b.error);
     if (a.value == 0 and b.value == 0) return {true, 0};
-    return {erroring, pow(this->a.value, this->b.value)};
+    return {erroring, std::pow(this->a.value, this->b.value)};
 }

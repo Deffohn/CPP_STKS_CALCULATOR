@@ -46,7 +46,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-//display lcd
 void MainWindow::displayResult(double_error displayedNumber)
 {
     QString number;
