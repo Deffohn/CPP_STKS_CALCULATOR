@@ -13,3 +13,4 @@ This notation is supported completly with all previous operators.
 ## How to setup
 Use Qt last version and open project file, select all or file and build the project
 
+>You can also download our last release 
