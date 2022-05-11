@@ -89,17 +89,24 @@ void MainWindow::onButtonClicked()
     }
 
     const auto last_ch = displayed_text.back();
-    if (std::size(button_text) == 1) {
-        auto to_append = std::string{};
-        if ((!std::isdigit(last_ch) && last_ch != '.') || (!std::isdigit(button_text[0]) && !std::isspace(button_text[0]) && button_text[0] != '.'))
-            to_append.append(" ");
+    if (std::isspace(last_ch) && std::isspace(button_text[0]))
+       return;
 
-        to_append.append(button_text);
-        ui->calculDisplay->setText(ui->calculDisplay->toPlainText().append(QString::fromStdString(to_append)));
-        return;
+    auto to_append = std::string{};
+
+    if (!std::isspace(button_text[0])) {
+        if ((std::isdigit(button_text[0]) || button_text[0] == '.') && !std::isdigit(last_ch) && last_ch != '.' && !std::isspace(last_ch))
+            to_append.append(" ");
+        else if (!std::isdigit(button_text[0]) && button_text[0] != '.') {
+            if (!std::isspace(last_ch) && !std::isdigit(last_ch) && last_ch != '.')
+                to_append.append(" ");
+            else if (std::isdigit(last_ch) || last_ch == '.')
+                to_append.append(" ");
+        }
     }
 
-    ui->calculDisplay->setText(ui->calculDisplay->toPlainText().append(QString::fromStdString(std::string{" "}.append(button_text))));
+    to_append.append(button_text);
+    ui->calculDisplay->setText(ui->calculDisplay->toPlainText().append(QString::fromStdString(to_append)));
 }
 
 void MainWindow::onComputeClicked()
@@ -132,8 +139,10 @@ void MainWindow::onRemoveCharClicked()
     if (stringDisplayed[stringDisplayed.length() - 1] != '>'){
         displayed.remove(displayed.length() - 1, displayed.length());
     }
-    if (stringDisplayed[stringDisplayed.length() - 2] == ' ')
-        displayed.remove(displayed.length() - 1, displayed.length());
+
+    for (int i = std::size(stringDisplayed) - 1; i >= 0 && stringDisplayed[i] == ' '; --i)
+        displayed.chop(1);
+
     ui->calculDisplay->setText(displayed);
 }
 
