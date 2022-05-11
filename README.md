@@ -14,3 +14,4 @@ This notation is supported completly with all previous operators.
 Use Qt last version and open project file, select all or file and build the project
 
 >You can also download our last release 
+> https://github.com/Zuxaw/CPP_STKS_CALCULATOR/releases/tag/v1.0
