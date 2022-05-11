@@ -136,13 +136,13 @@ void MainWindow::onRemoveCharClicked()
 {
     QString displayed = QString(ui->calculDisplay->toPlainText());
     std::string stringDisplayed(displayed.toStdString());
-    if (stringDisplayed[stringDisplayed.length() - 1] != '>'){
-        displayed.remove(displayed.length() - 1, displayed.length());
-    }
 
-    for (int i = std::size(stringDisplayed) - 1; i >= 0 && stringDisplayed[i] == ' '; --i)
+    if (stringDisplayed[stringDisplayed.length() - 1] == '>')
+        return;
+
+    displayed.chop(1);
+    for (int i = std::size(stringDisplayed) - 2; i >= 0 && stringDisplayed[i] == ' '; --i)
         displayed.chop(1);
-
     ui->calculDisplay->setText(displayed);
 }
 
@@ -156,4 +156,5 @@ void MainWindow::toggleReversePolish()
 {
     reversePolish = !reversePolish;
     ui->buttonPolish->setText((reversePolish) ? "Toggle regular calculator" : "Toggle reverse polish");
+    onClearExpressionClicked();
 }
