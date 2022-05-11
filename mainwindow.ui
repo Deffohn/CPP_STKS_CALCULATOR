@@ -279,7 +279,7 @@
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clear the expression by clicking here&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>CC</string>
+               <string>clear</string>
               </property>
              </widget>
             </item>
