@@ -15,3 +15,5 @@ Use Qt last version and open project file, select all or file and build the proj
 
 >You can also download our last release 
 > https://github.com/Deffohn/CPP_STKS_CALCULATOR/releases/tag/v1.0
+
+![image](https://user-images.githubusercontent.com/82362374/167853197-03e7dba6-f246-4a7b-b006-55ea0e9b9a59.png)
