@@ -1,2 +1,12 @@
 # CPP_STKS_CALCULATOR
-qt self-learning goes brrrrrrrr
+
+>c++ and qt project, this is a regular Microsoft's Windows like calculator.
+
+## Operators
+Sum, substract, product, division, square and square root are supported, with an error result when operators do the calcul (like dividing by 0).
+You can also open and close brackets to specify calcul priorities.
+
+## Reverse Polish Notation (RPN)
+This notation is supported completly with all previous operators.
+>the RPN expression "1.2 4 sqrt +" would return the same result as the regular expression "1.2 + sqrt(4)"
+
