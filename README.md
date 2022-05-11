@@ -10,3 +10,6 @@ You can also open and close brackets to specify calcul priorities.
 This notation is supported completly with all previous operators.
 >the RPN expression "1.2 4 sqrt +" would return the same result as the regular expression "1.2 + sqrt(4)"
 
+## How to setup
+Use Qt last version and open project file, select all or file and build the project
+
